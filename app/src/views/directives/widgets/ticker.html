@@ -1,0 +1,12 @@
+<div class="ticker">
+	<!-- https://www.html.am/html-codes/marquees/scrolling-text.cfm -->
+	<marquee behavior="scroll" direction="left">
+		<span ng-repeat="quote in quotes">
+			<span class="tick">{{quote.tick}}</span>
+			<span class="name">(<a href="{{link_url_base + quote.tick}}">{{quote.name}}</a>)</span>
+			<span class="price">{{quote.price}}</span>
+			<span class="amount-decreased" ng-class="(quote.deltaamount <= 0)?'red-tick':'green-tick'">{{quote.deltaamount}}</span>
+			<span class="percentage-decreased" ng-class="(quote.deltaamount <= 0)?'red-tick':'green-tick'">{{quote.deltapercent}}</span>
+		</span>
+	</marquee>
+</div>

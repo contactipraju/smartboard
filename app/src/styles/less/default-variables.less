@@ -1,0 +1,66 @@
+@body-background:			#f1f1f1;
+
+@brand-primary:				#ef496a;
+@brand-success:				#4cbea0;
+@brand-info:				#568fce;
+@brand-warning:				#f9a872;
+@brand-danger:				#d9534f;
+
+@bg-primary:				#4cbea0;
+@bg-secondary:				#dbf2ec;
+
+@premium-highlight:			#ffe007;
+
+@text-agg-min:				#2ef149;
+@text-agg-max:				#f93b3b;
+@text-agg-avg:				#49cff1;
+@text-agg-wavg:				#ef7cee;
+@text-agg-sum:				#ffe007;
+
+@text-agg-min-on-light:		#2aa23a;
+@text-agg-max-on-light:		#f93b3b;
+@text-agg-avg-on-light:		#0c8eaf;
+@text-agg-wavg-on-light:	#bf25be;
+@text-agg-sum-on-light:		#ab9813;
+
+@font-family-default:		"Roboto", sans-serif;
+@font-family-heading:		"Roboto", sans-serif;
+@font-weight-bold: 			500;
+
+@dock-width: 				30%;
+
+@nav-bar-height: 			150px;
+@nav-bar-mobile-height: 	52px;
+
+.clamp(@lines, @lineHeight:@line-height-base) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	display: -webkit-box;
+	-webkit-line-clamp: @lines;
+	-webkit-box-orient: vertical;
+
+	line-height: @lineHeight;
+	max-height: @lineHeight * @lines * 1em;
+
+	box-sizing: content-box;
+}
+
+.unclamp {
+	display: block;
+	max-height: 999px;
+}
+
+.for(@list, @code) {
+    & {
+        .loop(@i:1) when (@i =< length(@list)) {
+            @value: extract(@list, @i);
+
+            @code();
+
+            .loop(@i + 1);
+        }
+
+        .loop();
+    }
+}

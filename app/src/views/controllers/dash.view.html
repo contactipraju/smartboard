@@ -1,0 +1,57 @@
+<div class="main-content">
+	<div class="site-header">
+		<div class="temp-bg" style="width: 100%; background-image: url(src/styles/images/site-header.png);"></div>
+	</div>
+
+	<div class="new-dash-container">
+		<div class="heading clearfix" ng-if="editing">
+			<div class="widget-picker-controls pull-left">
+				<a href ng-click="addWidget()">
+					<i class="icon-add"></i> Add a widget
+				</a>
+			</div>
+
+			<div class="widget-picker-controls pull-right">
+				<a href ng-click="saveDash()">
+					<i class="icon-edit"></i> Save dashboard
+				</a>
+			</div>
+		</div>
+		<div class="heading clearfix" ng-if="!editing">
+			<div class="widget-picker-controls pull-right">
+				<a href ng-click="editDash()">
+					<i class="icon-edit"></i> Configure dashboard
+				</a>
+			</div>
+		</div>
+
+		<div class="widget-layout-container">
+			<div class="row">
+				<div class="col-md-12">
+					<div gridstack class="grid-stack grid-stack-12 grid1" options="options"
+						data-gs-width="12"
+						options="gridOptions"
+						on-change="onChange(event,items)"
+						on-drag-start="onDragStart(event,ui)"
+						on-drag-stop="onDragStop(event,ui)"
+						on-resize-start="onResizeStart(event,ui)"
+						on-resize-stop="onResizeStop(event,ui)">
+
+						<div gridstack-item ng-repeat="w in widgets" class="grid-stack-item"
+							gs-item-x="w.x" gs-item-y="w.y"
+							gs-item-width="w.width" gs-item-height="w.height"
+							gs-item-min-width="w.minWidth" gs-item-min-height="w.minHeight"
+							gs-item-autopos="false" on-item-added="onItemAdded(item)" on-item-removed="onItemRemoved(item)">
+							<div class="grid-stack-item-content">
+								<div class="grid-item-header"></div>
+								<div class="grid-item-body">
+									<ms-panel w="w"></ms-panel>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

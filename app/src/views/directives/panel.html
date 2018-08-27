@@ -1,0 +1,68 @@
+<div class="slide">
+	<div class="slide-header clearfix">
+		<div class="slide-title pull-left">{{selectedWidget.name}}</div>
+		<div class="slide-menu pull-right" ng-if="$parent.editing">
+			<div class="btn-group pull-right">
+				<button type="button" class="dropdown-toggle btn btn-xs btn-default" data-toggle="dropdown">
+					<i class="icon-menu"></i>
+				</button>
+
+				<ul class="dropdown-menu dropdown-menu-right" role="menu">
+					<li class="dropdown-header">
+						{{::LANGUAGE.string['app.dashboard.menu.general']}} {{::LANGUAGE.string['app.dashboard.menu.widgets']}}
+					</li>
+					<li ng-repeat="wid in widgetTypes | filter:{ enabled: 'true', category: 'general' }">
+						<a class="clearfix" href ng-click="selectWidgetType(wid)">
+							{{wid.name}}
+							<i class="icon-tick pull-right" ng-if="selectedWidget.id == wid.id"></i>
+						</a>
+					</li>
+					
+					<li class="divider"></li>
+					<li class="dropdown-header">
+						{{::LANGUAGE.string['app.dashboard.menu.misc']}}
+					</li>
+					<li ng-repeat="wid in widgetTypes | filter:{ enabled: 'true', category: 'misc' }">
+						<a class="clearfix" href ng-click="selectWidgetType(wid)">
+							{{wid.name}}
+							<i class="icon-tick pull-right" ng-if="selectedWidget.id == wid.id"></i>
+						</a>
+					</li>
+					
+					<li class="divider"></li>
+					<li class="dropdown-header">{{::LANGUAGE.string['app.dashboard.menu.options']}}</li>
+					<li>
+						<a href ng-click="removeWidget(w)">
+							<i class="icon-trash"></i>&nbsp;{{::LANGUAGE.string['app.dashboard.menu.delete']}}
+						</a>
+					</li>
+
+					<li class="divider"></li>
+					<li>
+						<a href ng-click="selectHelp()">
+							<i class="icon-help"></i>&nbsp;{{::LANGUAGE.string['app.dashboard.menu.help']}}
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="slide-body">
+		<ms-select-widget ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_SELECT_WIDGET"></ms-select-widget>
+		<ms-top-stories   ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_TOP_STORIES"></ms-top-stories>
+		<ms-daily-reports ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_DAILY_REPORTS"></ms-daily-reports>
+		<ms-news          ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_NEWS"></ms-news>
+		<ms-videos        ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_VIDEOS"></ms-videos>
+		<ms-tutorials     ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_TUTORIALS"></ms-tutorials>
+		<ms-shortcuts     ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_SHORTCUTS"></ms-shortcuts>
+
+		<ms-ticker        ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_TICKER"></ms-ticker>
+		<ms-chatbot       ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_CHATBOT"></ms-chatbot>
+		<ms-ec-components ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_EC_COMPONENTS"></ms-ec-components>
+		<ms-barometer     ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_BAROMETER"></ms-barometer>
+		<ms-asx-news      ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_ASX300_NEWS"></ms-asx-news>
+		<ms-asx-gainers   ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_ASX300_GAINERS_AND_LOSERS"></ms-asx-gainers>
+		<ms-help          ng-if="selectedWidget.id === STRINGS.WIDGET_TYPE_HELP"></ms-help>
+	</div>
+</div>
