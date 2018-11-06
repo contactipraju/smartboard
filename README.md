@@ -25,3 +25,5 @@
         Ability to insert/select different chart types inside a slide
         Ability to set data-source for the charts
  
+    Demo:
+        https://contactipraju.github.io/smartboard/app/index.html#!/
